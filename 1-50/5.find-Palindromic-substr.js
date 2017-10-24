@@ -1,30 +1,25 @@
-var longestPalindrome = function(s) {
-  var result = s.split('');
-  
+var longestPalindrome = function (s) {
   //检验是否为回文
-  var isHuiWen  = function(x){
-    x === x.split('').reverse().join('');
+  var isHuiWen = function (x) {
+    return x === x.split('').reverse().join('');
   };
 
   //防止字符串为空
-  if(!s) return ;
+  if (!s) return;
 
-  if(s.length === 1) return s;
+  if (s.length === 1) return s;
 
-  for(var i =0;i<result.length;i++){
-    var k1 = s.lastIndexOf(v);
-    if(k1 !== k){
-      var substr = s.substr(k, k1);
-      if(isHuiWen(substr)){
-        result.push(substr);
+  var longest = '';
+  var temp = '';
+
+  for (var i = 0; i < s.length; i++) {
+    for (var j = i; j < s.length + 1; j++) {
+      temp = s.substring(i, j);
+      if (isHuiWen(temp) && temp.length > longest.length) {
+        longest = temp;
       }
     }
   }
-  result.filter((v,k) => {
-    //如果存在与两个相同字符
-    var k1 = s.lastIndexOf(v);
-    if(k1 !== k){
-      var substr = s.substr(k, k1);
-    }
-  });
+
+  return longest;
 };
