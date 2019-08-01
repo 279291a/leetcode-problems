@@ -23,3 +23,27 @@ var removeDuplicates = function(nums) {
   }
   return i + 1;
 };
+
+/**
+ *思路：i 表示头指针,比较nums[i]和nums[j],如果不等且元素相邻，将i+1,否则赋值
+ * @param {*} nums
+ */
+var removeDuplicates2 = function(nums) {
+  var i = 0;
+  j = i + 1;
+  n = nums.length;
+  if (n === 0 || n === 1) return n;
+  while (j < n) {
+    if (nums[j] !== nums[i]) {
+      if (i + 1 !== j) {
+        nums[i + 1] = nums[j];
+      }
+      i++;
+    }
+    j++;
+  }
+
+  return i + 1;
+};
+
+console.log(removeDuplicates2([3, 3, 2]));
