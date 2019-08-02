@@ -6,12 +6,12 @@
  * @param {number[]} nums
  * @return {number}
  */
-var removeDuplicates = function(nums) {
-  var i = 0;
+const removeDuplicates = function (nums) {
+  let i = 0;
   j = 1;
   len = nums.length;
   while (j < len) {
-    for (var k = 0; k < j; k++) {
+    for (let k = 0; k < j; k++) {
       if (nums[j] === nums[k]) {
         break;
       } else if (k === j - 1) {
@@ -28,8 +28,8 @@ var removeDuplicates = function(nums) {
  *思路：i 表示头指针,比较nums[i]和nums[j],如果不等且元素相邻，将i+1,否则赋值
  * @param {*} nums
  */
-var removeDuplicates2 = function(nums) {
-  var i = 0;
+const removeDuplicates2 = function (nums) {
+  let i = 0;
   j = i + 1;
   n = nums.length;
   if (n === 0 || n === 1) return n;

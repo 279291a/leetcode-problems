@@ -16,8 +16,5 @@
     "url": "https://github.com/279291a/leetcode-problems/issues"
   },
   "homepage": "https://github.com/279291a/leetcode-problems#readme",
-  "devDependencies": {
-    "eslint": "^6.1.0",
-    "eslint-config-airbnb-base": "^13.2.0",
-  }
+  "devDependencies": {}
 }
