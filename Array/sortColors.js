@@ -15,32 +15,26 @@ var sortColors = function(nums) {
       }
     }
   }
-  console.log(nums);
 };
 
 /**
  * 思路：三路快排
- * nums[0,lt] ==0 ,nums[lt+1,i-1]==1，nums[i,gt]==2
+ * nums[0,lt] ==0 ,nums[lt+1,i-1]==1，nums[gt,n-1]==2
  *
  */
 var sortColors2 = function(nums) {
-  let i = 0;
+  let lt = -1;
   let k = 0;
-  j = nums.length - 1;
-  while (k <= j) {
-    let temp;
+  gt = nums.length;
+  while (k < gt) {
     if (nums[k] === 0) {
-      temp = nums[i];
-      nums[i++] = 0;
-      nums[k++] = temp;
+      nums[k++] = nums[++lt];
+      nums[lt] = 0;
+    } else if (nums[k] === 2) {
+      nums[k] = nums[--gt];
+      nums[gt] = 2;
+    } else {
+      k++;
     }
-    if (nums[k] === 2) {
-      temp = nums[k];
-      nums[k] = nums[j];
-      nums[j--] = 2;
-    }
-    k++;
   }
 };
-
-console.log(sortColors2([2, 0, 2, 1, 1, 0]));
