@@ -6,6 +6,8 @@
 
 /**
  *
+ * 二分查找：循环实现
+ *
  * @param {number[]} nums
  * @param {number} value
  */
@@ -34,6 +36,27 @@ const bsearch = (nums, value) => {
   return -1;
 };
 
-const bsearch2 = (nums, value) => {};
+/**
+ * 二分查找的递归实现
+ *
+ * @param {number []} nums
+ * @param {number} value
+ */
+const bsearch2 = (nums, value) => {
+  let low = 0;
+  let high = nums.length - 1;
 
-console.log(bsearch([1, 2, 3, 4, 5, 6, 7, 8, 8], 2));
+  if (low > high) return -1;
+
+  let mid = Math.floor(low + (high - low) / 2);
+
+  if (nums[mid] === value) return mid;
+
+  if (nums[mid] < value) {
+    return bsearch2(nums.slice(mid + 1), value);
+  } else {
+    return bsearch2(nums.slice(low, mid), value);
+  }
+};
+
+console.log(bsearch2([1, 2, 3, 4, 5, 6, 7, 8, 8], 2));
