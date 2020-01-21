@@ -14,7 +14,7 @@ const bsearch = (nums, value) => {
   let high = nums.length - 1;
   let mid;
 
-  while (low < high) {
+  while (low <= high) {
     mid = Math.floor(high - (high - low) / 2);
 
     if (nums[mid] === value) return mid;
