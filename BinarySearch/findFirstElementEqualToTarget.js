@@ -13,7 +13,7 @@ const findFirstEq = (nums, value) => {
   let high = nums.length - 1;
   let mid;
 
-  while (low < high) {
+  while (low <= high) {
     mid = Math.floor(high - ((high - low) >> 1));
 
     if (nums[mid] > value) {
