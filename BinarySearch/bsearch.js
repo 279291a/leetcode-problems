@@ -15,6 +15,12 @@ const bsearch = (nums, value) => {
   let mid;
 
   while (low <= high) {
+    /**
+     * 多种写法：
+     * 1. 直观： mid = Math.floor((high + low) /2) 可能溢出
+     * 2. 防止溢出： mid = Math.floor(low + (high - low) / 2)
+     * 3. 位运算法，效率最高： mid = Math.floor(low + ((high - low) >> 1))
+     */
     mid = Math.floor(high - (high - low) / 2);
 
     if (nums[mid] === value) return mid;
@@ -27,5 +33,7 @@ const bsearch = (nums, value) => {
   }
   return -1;
 };
+
+const bsearch2 = (nums, value) => {};
 
 console.log(bsearch([1, 2, 3, 4, 5, 6, 7, 8, 8], 2));
