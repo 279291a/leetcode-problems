@@ -25,7 +25,7 @@ const bsearch = (nums, value) => {
       low = mid + 1;
     }
   }
-  return null;
+  return -1;
 };
 
 console.log(bsearch([1, 2, 3, 4, 5, 6, 7, 8, 8], 2));
