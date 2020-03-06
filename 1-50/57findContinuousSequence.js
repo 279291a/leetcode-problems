@@ -60,4 +60,22 @@ var findContinuousSequence = function(target) {
   return result;
 };
 
-console.log(findContinuousSequence(9));
+var findContinuousSequence2 = function(target) {
+  var result = [];
+
+  var a0 = 1;
+  var max = Math.floor(target / 2 + 1);
+
+  while (a0 < max) {
+    var n =
+      Math.sqrt(2 * target + Math.pow(2 * a0 - 1, 2) / 4) - (2 * a0 - 1) / 2;
+    if (Math.floor(n) === n) {
+      result.push(createArray(a0, n));
+    }
+    a0++;
+  }
+
+  return result;
+};
+
+console.log(findContinuousSequence2(9));
