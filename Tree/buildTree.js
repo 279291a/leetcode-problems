@@ -53,4 +53,37 @@ var buildTree = function(inorder, postorder) {
   return root;
 };
 
-buildTree([9, 3, 15, 20, 7], [9, 15, 7, 20, 3]);
+/**
+ * 从前序与中序遍历序列构造二叉树
+ * @param {*} inorder
+ * @param {*} postorder
+ */
+var buildTree = function(preorder, inorder) {
+  if (inorder.length === 0 || !inorder) return null;
+
+  var r = preorder.shift();
+  var root = new TreeNode(r);
+
+  var ii = inorder.indexOf(r);
+
+  var il = inorder.slice(0, ii);
+  var ir = inorder.slice(ii + 1);
+
+  if (il.length === 1) {
+    root.left = new TreeNode(il[0]);
+  } else {
+    var pl = preorder.slice(0, ii);
+    root.left = buildTree(pl, il);
+  }
+
+  if (ir.length === 1) {
+    root.right = new TreeNode(ir[0]);
+  } else {
+    var pr = preorder.slice(ii);
+    root.right = buildTree(pr, ir);
+  }
+
+  return root;
+};
+
+buildTree([3, 9, 20, 15, 7], [9, 15, 7, 20, 3]);
