@@ -35,3 +35,23 @@ const knapsack = (weight, n, w) => {
     return 0;
   }
 };
+
+//使用一维数组降低空间复杂度
+const knapsack2 = (weight, n, w) => {
+  const states = Array(w + 1).fill(false);
+
+  states[0] = true;
+  states[weight[0]] = true;
+
+  for (let i = 0; i < n; i++) {
+    for (let j = w - weight[i]; j >= 0; --j) {
+      if (states[j] === true) states[j + weight[i]] = true;
+    }
+  }
+
+  for (let k = w; k >= 0; k--) {
+    if (states[k] === true) return i;
+  }
+
+  return 0;
+};
