@@ -45,9 +45,8 @@ class SingleLinkedList {
   findPre(element) {
     let cur = this.head;
 
-    while (cur) {
-      if (cur.next === element) return cur;
-
+    while (cur.next) {
+      if (cur.next.element === element) return cur;
       cur = cur.next;
     }
 
@@ -83,9 +82,12 @@ class SingleLinkedList {
   remove(item) {
     const pre = this.findPre(item);
 
-    if (pre === "-1") console.error(item + "不存在");
+    if (pre === "-1") {
+      console.error(item + "不存在");
+      return;
+    }
 
-    pre.next = pre.next.next;
+    if (pre.next) pre.next = pre.next.next;
   }
 
   //遍历所有节点
@@ -107,13 +109,13 @@ LList.append("zhao");
 LList.display();
 
 // // chen -> curry -> sang -> zhao
-// console.log("-------------insert item------------");
-// LList.insert("qian", "chen"); // 首元素后插入
-// LList.insert("zhou", "zhao"); // 尾元素后插入
-// LList.display(); // chen -> qian -> curry -> sang -> zhao -> zhou
-// console.log("-------------remove item------------");
-// LList.remove("curry");
-// LList.display(); // chen -> qian -> sang -> zhao -> zhou
+console.log("-------------insert item------------");
+LList.insert("qian", "chen"); // 首元素后插入
+LList.insert("zhou", "zhao"); // 尾元素后插入
+LList.display(); // chen -> qian -> curry -> sang -> zhao -> zhou
+console.log("-------------remove item------------");
+LList.remove("zhou");
+LList.display(); // chen -> qian -> sang -> zhao -> zhou
 // console.log("-------------find by item------------");
 // LList.findByValue("chen");
 // console.log("-------------find by index------------");
