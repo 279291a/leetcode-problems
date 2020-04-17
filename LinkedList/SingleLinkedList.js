@@ -58,13 +58,11 @@ class SingleLinkedList {
   append(newElement) {
     let cur = this.head;
 
-    while (cur) {
-      if (cur.next === null) {
-        cur.next = newElement;
-      }
-
+    while (cur.next) {
       cur = cur.next;
     }
+
+    cur.next = new Node(newElement);
   }
 
   //指定元素向后插入
@@ -100,3 +98,29 @@ class SingleLinkedList {
     }
   }
 }
+
+const LList = new SingleLinkedList();
+LList.append("chen");
+LList.append("curry");
+LList.append("sang");
+LList.append("zhao");
+LList.display();
+
+// // chen -> curry -> sang -> zhao
+// console.log("-------------insert item------------");
+// LList.insert("qian", "chen"); // 首元素后插入
+// LList.insert("zhou", "zhao"); // 尾元素后插入
+// LList.display(); // chen -> qian -> curry -> sang -> zhao -> zhou
+// console.log("-------------remove item------------");
+// LList.remove("curry");
+// LList.display(); // chen -> qian -> sang -> zhao -> zhou
+// console.log("-------------find by item------------");
+// LList.findByValue("chen");
+// console.log("-------------find by index------------");
+// LList.findByIndex(2);
+// console.log("-------------与头结点同值元素测试------------");
+// LList.insert("head", "sang");
+// LList.display(); // chen -> qian -> sang -> head -> zhao -> zhou
+// LList.findPrev("head"); // sang
+// LList.remove("head");
+// LList.display(); // chen -> qian -> sang -> zhao -> zhou
