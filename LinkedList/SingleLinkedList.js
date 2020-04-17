@@ -42,7 +42,7 @@ class SingleLinkedList {
   }
 
   //查找前一个
-  findPre(element) {
+  findPrev(element) {
     let cur = this.head;
 
     while (cur.next) {
@@ -80,7 +80,7 @@ class SingleLinkedList {
 
   //根据值删除
   remove(item) {
-    const pre = this.findPre(item);
+    const pre = this.findPrev(item);
 
     if (pre === "-1") {
       console.error(item + "不存在");
@@ -114,15 +114,15 @@ LList.insert("qian", "chen"); // 首元素后插入
 LList.insert("zhou", "zhao"); // 尾元素后插入
 LList.display(); // chen -> qian -> curry -> sang -> zhao -> zhou
 console.log("-------------remove item------------");
-LList.remove("zhou");
+LList.remove("curry");
 LList.display(); // chen -> qian -> sang -> zhao -> zhou
-// console.log("-------------find by item------------");
-// LList.findByValue("chen");
-// console.log("-------------find by index------------");
-// LList.findByIndex(2);
-// console.log("-------------与头结点同值元素测试------------");
-// LList.insert("head", "sang");
-// LList.display(); // chen -> qian -> sang -> head -> zhao -> zhou
-// LList.findPrev("head"); // sang
-// LList.remove("head");
-// LList.display(); // chen -> qian -> sang -> zhao -> zhou
+console.log("-------------find by item------------");
+console.log(LList.findByValue("chen"));
+console.log("-------------find by index------------");
+console.log(LList.findByIndex(2));
+console.log("-------------与头结点同值元素测试------------");
+LList.insert("head", "sang");
+LList.display(); // chen -> qian -> sang -> head -> zhao -> zhou
+LList.findPrev("head"); // sang
+LList.remove("head");
+LList.display(); // chen -> qian -> sang -> zhao -> zhou
