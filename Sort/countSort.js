@@ -9,8 +9,6 @@ const countSort = (nums) => {
     }
   });
 
-  console.log(max);
-
   const count = Array(max).fill(0);
   const scores = [];
   const result = [];
